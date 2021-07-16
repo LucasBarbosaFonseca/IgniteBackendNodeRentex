@@ -19,7 +19,7 @@ services:
     ports: 
       - 3333:3333
     volumes: 
-      - .:/usr/src/app
+      - .:/usr/app
     links:
       - database_ignite
     depends_on: 
