@@ -1,13 +1,13 @@
 import { container } from 'tsyringe';
 
-import { ICategoriesRepository } from '../../modules/cars/repositories/ICategoriesRepository';
-import { CategoriesRepository } from '../../modules/cars/repositories/implementations/CategoriesRepository';
+import { ICategoriesRepository } from '@modules/cars/repositories/ICategoriesRepository';
+import { CategoriesRepository } from '@modules/cars/infra/typeorm/repositories/CategoriesRepository';
 
-import { ISpecificationsRepository } from '../../modules/cars/repositories/ISpecificationsRepository';
-import { SpecificationsRepository } from '../../modules/cars/repositories/implementations/SpecificationsRepository';
+import { ISpecificationsRepository } from '@modules/cars/repositories/ISpecificationsRepository';
+import { SpecificationsRepository } from '@modules/cars/infra/typeorm/repositories/SpecificationsRepository';
 
-import { IUsersRepository } from '../../modules/accounts/repositories/IUsersRepository';
-import { UserRepository } from '../../modules/accounts/repositories/implementations/UserRepository';
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
+import { UserRepository } from '@modules/accounts/infra/typeorm/repositories/UserRepository';
 
 container.registerSingleton<ICategoriesRepository>(
   "CategoriesRepository",
