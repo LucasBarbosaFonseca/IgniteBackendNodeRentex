@@ -6,7 +6,7 @@ import swaggerUi from "swagger-ui-express";
 import { router } from "./routes";
 import swaggerFile from "../../../swagger.json";
 
-import "@shared/infra/typeorm";
+import createConnection from "@shared/infra/typeorm";
 
 import '@shared/container';
 
@@ -14,6 +14,7 @@ import { AppError } from "@shared/errors/AppError";
 
 const app = express();
 
+createConnection();
 app.use(express.json());
 
 app.use("/app-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
