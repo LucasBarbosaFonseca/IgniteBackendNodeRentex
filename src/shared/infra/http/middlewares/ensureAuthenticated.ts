@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
 
 import { AppError } from "@shared/errors/AppError";
-import auth from "config/auth";
+import auth from "@config/auth";
 
 import { UserRepository } from "@modules/accounts/infra/typeorm/repositories/UserRepository";
 import { UsersTokensRepository } from "@modules/accounts/infra/typeorm/repositories/UsersTokensRepository";

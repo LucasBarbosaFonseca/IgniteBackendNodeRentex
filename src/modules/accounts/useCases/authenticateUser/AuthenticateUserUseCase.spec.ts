@@ -1,18 +1,31 @@
 import { AppError } from "@shared/errors/AppError";
+
 import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
+
 import { InMemoryUsersRepository } from "@modules/accounts/repositories/in-memory/InMemoryUsersRepository";
+import { InMemoryUsersTokensRepository } from "@modules/accounts/repositories/in-memory/InMemoryUsersTokensRepository";
+
 import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
 
+import { DayjsDateProvider } from "@shared/container/providers/DateProvider/implementations/DayjsDateProvider";
+
 let authenticateUserUseCase: AuthenticateUserUseCase;
 let inMemoryUsersRepository: InMemoryUsersRepository;
+let inMemoryUsersTokensRepository: InMemoryUsersTokensRepository;
+let dayjsDateProvider: DayjsDateProvider;
 let createUserUseCase: CreateUserUseCase;
 
 describe("Authenticate User", () => {
   beforeEach(() => {
     inMemoryUsersRepository = new InMemoryUsersRepository();
+    inMemoryUsersTokensRepository = new InMemoryUsersTokensRepository();
+    dayjsDateProvider = new DayjsDateProvider();
+
     authenticateUserUseCase = new AuthenticateUserUseCase(
       inMemoryUsersRepository,
+      inMemoryUsersTokensRepository,
+      dayjsDateProvider
     );
     createUserUseCase = new CreateUserUseCase(inMemoryUsersRepository);
   });
